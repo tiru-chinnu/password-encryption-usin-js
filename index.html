@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Include bcrypt.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bcrypt/5.0.1/bcrypt.min.js"></script>
+
+<script>
+   const password = "your_password";
+   bcrypt.genSalt(10, function(err, salt) {
+       bcrypt.hash(password, salt, function(err, hash) {
+           if (err) throw err;
+           console.log("Hashed Password: ", hash);
+       });
+   });
+   bcrypt.compare("your_password", hash, function(err, res) {
+       if(res) {
+           console.log("Passwords match!");
+       } else {
+           console.log("Passwords do not match!");
+       }
+   });
+</script>
+</body>
+</html>
